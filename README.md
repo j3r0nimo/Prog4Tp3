@@ -15,7 +15,7 @@ Simulador de Pedidos de Cafetería (TDD + React Testing Library + MSW)
 | msw (Mock Service Worker)   | Simulador de API             | Permite simular llamadas a API REST o GraphQL durante las pruebas, por lo cual no se necesita un backend real.                |
 | zod                         | Validación de esquema        | Valida y analiza datos, utilizada para garantizar que las respuestas de la API o las entradas de formulario sean correctas.   |
 
-## Integrantes
+## Integrantes Grupo 11
 
 - Jeronimo Baltian Ortiz
 - Marcos Diaz
