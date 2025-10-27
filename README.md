@@ -1,5 +1,10 @@
-# Prog4Tp3
-trabajo practico N°3 Programacion 4
+# Programación 4
+
+## Trabajo Práctico N° 3
+
+Simulador de Pedidos de Cafetería (TDD + React Testing Library + MSW)
+
+## Integrantes
 
 - Jeronimo Baltian Ortiz
 - Marcos Diaz
