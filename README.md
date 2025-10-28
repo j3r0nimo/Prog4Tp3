@@ -2,7 +2,7 @@
 
 Entorno configurado para desarrollar el testing de un frontend.
 
-## Descarga del entorno via pull
+## Descarga del entorno con git pull
 
 - Crear una rama propia en GitHub, para no emplear esta, por ej: micaela_tp3
 - En modo local, desde VS Code y desde la raiz de la carpeta vacia, ejecutamos
@@ -24,7 +24,7 @@ Entorno configurado para desarrollar el testing de un frontend.
 
 ## Instalación & ejecución del entorno
 
-- continuando el paso anterior y dentro de Prog4Tp3
+- continuando el paso anterior y SIEMPRE dentro de Prog4Tp3
 - npm install
 - npm run dev
 
