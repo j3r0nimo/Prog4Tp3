@@ -4,16 +4,18 @@
 
 Simulador de Pedidos de Cafetería (TDD + React Testing Library + MSW)
 
+## Entorno via pull
+
+Por el momento, este es el entorno inicial para desarrollar el TP 3, INCLUIDO el Tipado Base.
+
 ## Descarga del entorno via pull
 
 - Crear una rama propia en GitHub, para no emplear esta, por ej: micaela_tp3
 - En modo local, desde VS Code y desde la raiz de la carpeta vacia, ejecutamos
 - git init
--
 - git clone https://github.com/j3r0nimo/Prog4Tp3.git
 - La acción anterior crea una sub carpeta y la llama Prog4Tp3
-- Ingresamos a esa nueva carpeta.
-- OJO, es fundamental ingresar a esa nueva carpeta en toda acción con git
+- Ingresamos a esa nueva carpeta. OJO, es fundamental ingresar a esa nueva carpeta en toda acción con git
 - En la terminal, entonces, sería: cd Prog4Tp3
 - git status
 - ese comando nos dirá en que rama estamos,
