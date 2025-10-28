@@ -8,8 +8,8 @@ Entorno configurado para desarrollar el testing de un frontend. (TDD + React Tes
 - En modo local, desde VS Code y desde la raiz de la carpeta vacia, ejecutamos
 - git init
 - git clone https://github.com/j3r0nimo/Prog4Tp3.git
-- La acción anterior crea una sub carpeta y la llama Prog4Tp3
-- Ingresamos a esa nueva carpeta. OJO, es fundamental ingresar a esa nueva carpeta en toda acción con git
+- La acción anterior crea una sub carpeta y la llama Prog4Tp3. Yo la renombré en el Explorador de Windows.
+- Ingresamos a esa nueva carpeta. OJO, es fundamental INGRESAR a esa nueva carpeta en toda acción con git
 - En la terminal, entonces, sería: cd Prog4Tp3
 - git status
 - ese comando nos dirá en que rama estamos,
