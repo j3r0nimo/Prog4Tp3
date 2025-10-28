@@ -1,14 +1,6 @@
-# Trabajo Práctico N° 3
+## Entorno para testing de frontend
 
-## Generalidades
-
-Simulador de Pedidos de Cafetería (TDD + React Testing Library + MSW)
-
-## Entorno via pull
-
-- Por el momento, este es el entorno inicial para desarrollar el TP 3.
-- Está incluido el Tipado Base.
-- Está incluida la solución para el HU1 — Visualización inicial del menú.
+Entorno configurado para desarrollar el testing de un frontend.
 
 ## Descarga del entorno via pull
 
