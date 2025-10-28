@@ -1,6 +1,6 @@
 ## Entorno para testing de frontend
 
-Entorno configurado para desarrollar el testing de un frontend.
+Entorno configurado para desarrollar el testing de un frontend. (TDD + React Testing Library + MSW).
 
 ## Descarga del entorno con git pull
 
