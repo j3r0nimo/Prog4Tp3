@@ -1,6 +1,9 @@
 ## Entorno para testing de frontend
 
-Entorno configurado para desarrollar el testing de un frontend. (TDD + React Testing Library + MSW).
+- Entorno configurado para desarrollar el testing de un frontend. (TDD + React Testing Library + MSW).
+- Una vez descargado e instalado, estará listo para iniciar el desarrollo de los tests.
+- Contiene una carpeta src/mocks para la creación de las simulaciones del backend / datos.
+- Warning! El error mas común es trabajar fuera de la subcarpeta raíz, la cual contiene el proyecto.
 
 ---
 
