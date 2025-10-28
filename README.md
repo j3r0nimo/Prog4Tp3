@@ -2,6 +2,8 @@
 
 Entorno configurado para desarrollar el testing de un frontend. (TDD + React Testing Library + MSW).
 
+---
+
 ## Descarga del entorno con git pull
 
 - Crear una rama propia en GitHub, para no emplear esta, por ej: micaela_tp3
@@ -22,15 +24,27 @@ Entorno configurado para desarrollar el testing de un frontend. (TDD + React Tes
 - Respuesta esperada: "On branch micaela_tp3"
 - git pull
 
+---
+
 ## Instalación & ejecución del entorno
 
 - continuando el paso anterior y SIEMPRE dentro de Prog4Tp3
 - npm install
 - npm run dev
 
+---
+
 ## Ejecución del testing
 
 - npm run test
+
+---
+
+## Resultado esperado
+
+![Pantalla](./public/pantallaFinal.png)
+
+---
 
 ## Bibliotecas & propósito
 
@@ -42,6 +56,8 @@ Entorno configurado para desarrollar el testing de un frontend. (TDD + React Tes
 | @testing-library/jest-dom   | Comparadores personalizados  | Proporciona adicionales como toBeInTheDocument() o toHaveTextContent(), permitiendo que las pruebas sean mas fáciles de leer. |
 | msw (Mock Service Worker)   | Simulador de API             | Permite simular llamadas a API REST o GraphQL durante las pruebas, por lo cual no se necesita un backend real.                |
 | zod                         | Validación de esquema        | Valida y analiza datos, utilizada para garantizar que las respuestas de la API o las entradas de formulario sean correctas.   |
+
+---
 
 ## Responsable
 
