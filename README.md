@@ -42,7 +42,7 @@ Entorno configurado para desarrollar el testing de un frontend. (TDD + React Tes
 
 ## Resultado esperado
 
-![Pantalla](./public/pantallaFinal.png)
+![Pantalla](./public/pantallaTest.jpg)
 
 ---
 
