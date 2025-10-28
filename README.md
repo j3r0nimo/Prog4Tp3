@@ -6,7 +6,9 @@ Simulador de Pedidos de Cafetería (TDD + React Testing Library + MSW)
 
 ## Entorno via pull
 
-Por el momento, este es el entorno inicial para desarrollar el TP 3, INCLUIDO el Tipado Base.
+- Por el momento, este es el entorno inicial para desarrollar el TP 3.
+- Está incluido el Tipado Base.
+- Está incluida la solución para el HU1 — Visualización inicial del menú.
 
 ## Descarga del entorno via pull
 
@@ -33,6 +35,10 @@ Por el momento, este es el entorno inicial para desarrollar el TP 3, INCLUIDO el
 - continuando el paso anterior y dentro de Prog4Tp3
 - npm install
 - npm run dev
+
+## Ejecución del testing
+
+- npm run test
 
 ## Bibliotecas & propósito
 

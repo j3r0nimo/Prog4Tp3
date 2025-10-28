@@ -1,18 +1,14 @@
-import { defineConfig } from "vite";
+// config de Vitest (globals: true, jsdom, setupFiles)
+// <reference types="vitest" />
+
+import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    react({
-      babel: {
-        plugins: [["babel-plugin-react-compiler"]],
-      },
-    }),
-  ],
+  plugins: [react()],
   test: {
+    globals: true, // habilita test, expect, describe...
     environment: "jsdom",
-    globals: true,
     setupFiles: "./src/setupTests.ts",
   },
 });
