@@ -1,6 +1,7 @@
 // componente para listado de productos
 import { useEffect, useState } from 'react';
-import { Product } from '../types/product';
+import type { Product } from '../types/product' ;
+// la palabra type le dice al compilador que esto es solo un tipo, y que no se debe generar ningun import real en el JS final, sino intenta importar alg q  no exsiste en tiempo de ejecucion (solo exsiste en compilacion). se usa para checkeo de tipos no se traduce a JS 
 
 export default function Menu() {
   const [products, setProducts] = useState<Product[]>([]);

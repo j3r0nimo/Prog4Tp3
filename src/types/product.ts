@@ -2,7 +2,7 @@
 import { z } from "zod";
 
 //valido objetos en timpo de ejeecucion, util para validar datos q vienen de una API, incluso si estan mockeados
-const ProductSchema = z.object({
+export const ProductSchema = z.object({
   id: z.string(),
   name: z.string().min(2),
   price: z.number().positive(),

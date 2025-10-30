@@ -1,6 +1,6 @@
 //datos de productos mock
 
-import { Product } from "../types/product";
+import type { Product } from "../types/product";
 
 export const productsMock: Product[] = [
   { id: "1", name: "Café con chocolate", price: 5000 },
