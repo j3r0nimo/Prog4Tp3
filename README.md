@@ -6,13 +6,22 @@ Simulador de Pedidos de Cafetería (TDD + React Testing Library + MSW)
 
 ## Instalación & ejecución del entorno
 
-- Dentro de la carpeta cafeteria. (OJO!)
+- Dentro de la carpeta cafeteria. (OJO!: Dentro de cafeteria)
 - npm install
 - npm run dev
 
 ## Ejecución del testing
 
 - npm run test
+
+## Carpetas src
+
+| Carpeta    | Resumen de su propósito                                                                    |
+| ---------- | ------------------------------------------------------------------------------------------ |
+| components | Contiene los componentes principales de la interfaz (por ejemplo, Menu.tsx).               |
+| mocks      | Define los datos simulados y handlers & server de MSW, para las pruebas sin backend real.  |
+| schemas    | Incluye los esquemas de validación de datos (construidos con Zod).                         |
+| tests      | Agrupa las pruebas unitarias y de integración que verifican el comportamiento del sistema. |
 
 ## Bibliotecas & propósito
 
