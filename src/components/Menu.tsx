@@ -1,8 +1,9 @@
-// HU1: componente que hace fetch("/api/productos") y renderiza <ul><li>
+// HU1: componente que hace el fetch("/api/productos") y renderiza <ul><li>
 // HU2: componente que crea la lista de pedidos
 // HU3: componente que calcula el total dinamicamente, cuando agrego o quito productos
+// HU4: componente que permite eliminar un ítem del pedido
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface Producto {
   id: string;
@@ -11,16 +12,13 @@ interface Producto {
 }
 
 export default function Menu() {
-  // Para el test HU1, para ver el menú
-  const [productos, setProductos] = useState<Producto[]>([]);
+  const [productos, setProductos] = useState<Producto[]>([]); // Para el test HU1, para ver el menú
 
-  // Para el test HU2, para el pedido y la orden
-  const [pedido, setPedido] = useState<Producto[]>([]);
+  const [pedido, setPedido] = useState<Producto[]>([]); // Para el test HU2, para el pedido y la orden
 
-  // Para el test HU3, para el calculo dinamico de costos
-  const [total, setTotal] = useState<number>(0);
+  const [total, setTotal] = useState<number>(0); // Para el test HU3, para el calculo dinamico de costos
 
-  // Llamado a la API, que va al mock en components/handlers.ts
+  // Llamado a la API para traer los datos simulados, desde handlers.ts
   useEffect(() => {
     fetch("/api/productos")
       .then((res) => res.json())
@@ -29,9 +27,11 @@ export default function Menu() {
 
   // Función para agregar productos
   const agregarItem = (producto: Producto) => {
-    const nuevoPedido = [...pedido, producto];
-    setPedido(nuevoPedido);
-    calcularTotal(nuevoPedido);
+    setPedido((prevPedido) => {
+      const nuevoPedido = [...prevPedido, producto];
+      calcularTotal(nuevoPedido);
+      return nuevoPedido;
+    });
   };
 
   const calcularTotal = (pedidoActual: Producto[]) => {
@@ -39,9 +39,20 @@ export default function Menu() {
     setTotal(nuevoTotal);
   };
 
-  // Ejercicio HU1: Se agrega un boton, que es para el HU2
+  // Función para eliminar productos
+  const eliminarItem = (index: number, e: React.MouseEvent) => {
+    e.stopPropagation(); // evita conflictos si hay botones anidados
+    setPedido((prevPedido) => {
+      const nuevoPedido = prevPedido.filter((_, i) => i !== index);
+      calcularTotal(nuevoPedido);
+      return nuevoPedido;
+    });
+  };
+
+  // Ejercicio HU1: <ul data-testid="menu-list">
   // Ejercicio HU2: <h2>Pedido</h2>
   // Ejercicio HU3: <h3>Total: ${total}</h3>
+  // Ejercicio HU4: <button>Eliminar</button>
   return (
     <div>
       <h1>Menú de La Cafetería</h1>
@@ -59,7 +70,8 @@ export default function Menu() {
       <ul role="list" data-testid="order-list">
         {pedido.map((item, index) => (
           <li key={index} role="listitem">
-            {item.name} - ${item.price}
+            {item.name} - ${item.price}{" "}
+            <button onClick={(e) => eliminarItem(index, e)}>Eliminar</button>
           </li>
         ))}
       </ul>

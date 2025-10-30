@@ -1,5 +1,7 @@
 # Trabajo Práctico N° 3
 
+---
+
 ## Generalidades
 
 Simulador de Pedidos de Cafetería (TDD + React Testing Library + MSW)
