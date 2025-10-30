@@ -24,12 +24,18 @@ Simulador de Pedidos de Cafetería (TDD + React Testing Library + MSW)
 
 ## Carpetas src
 
-| Carpeta    | Resumen de su propósito                                                                    |
-| ---------- | ------------------------------------------------------------------------------------------ |
-| components | Contiene los componentes principales de la interfaz (por ejemplo, Menu.tsx).               |
-| mocks      | Define los datos simulados y handlers & server de MSW, para las pruebas sin backend real.  |
-| schemas    | Incluye los esquemas de validación de datos (construidos con Zod).                         |
-| tests      | Agrupa las pruebas unitarias y de integración que verifican el comportamiento del sistema. |
+| Carpeta    | Resumen de su propósito                                                                        |
+| ---------- | ---------------------------------------------------------------------------------------------- |
+| components | Contiene el componente principal de la interfaz: Menu.tsx                                      |
+| mocks      | Crea un contexto al proveer datos simulados, levanta el server de MSW, simula un backend real. |
+| schemas    | Incluye los esquemas de validación de datos (construidos con Zod).                             |
+| tests      | Agrupa las pruebas unitarias y de integración que verifican el comportamiento del sistema.     |
+
+---
+
+## Ciclo de las pruebas
+
+Explicar (Cuando termine el HU6)
 
 ---
 

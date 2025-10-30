@@ -4,19 +4,16 @@
 // HU4: componente que permite eliminar un ítem del pedido
 
 import React, { useEffect, useState } from "react";
-
-interface Producto {
-  id: string;
-  name: string;
-  price: number;
-}
+import type { Product } from "../schemas/productSchema";
 
 export default function Menu() {
-  const [productos, setProductos] = useState<Producto[]>([]); // Para el test HU1, para ver el menú
+  const [productos, setProductos] = useState<Product[]>([]); // Para el test HU1, para ver el menú
 
-  const [pedido, setPedido] = useState<Producto[]>([]); // Para el test HU2, para el pedido y la orden
+  const [pedido, setPedido] = useState<Product[]>([]); // Para el test HU2, para el pedido y la orden
 
   const [total, setTotal] = useState<number>(0); // Para el test HU3, para el calculo dinamico de costos
+
+  const [mensaje, setMensaje] = useState<string | null>(null); // Para confirmar el estado del Pedido
 
   // Llamado a la API para traer los datos simulados, desde handlers.ts
   useEffect(() => {
@@ -26,7 +23,7 @@ export default function Menu() {
   }, []);
 
   // Función para agregar productos
-  const agregarItem = (producto: Producto) => {
+  const agregarItem = (producto: Product) => {
     setPedido((prevPedido) => {
       const nuevoPedido = [...prevPedido, producto];
       calcularTotal(nuevoPedido);
@@ -34,7 +31,7 @@ export default function Menu() {
     });
   };
 
-  const calcularTotal = (pedidoActual: Producto[]) => {
+  const calcularTotal = (pedidoActual: Product[]) => {
     const nuevoTotal = pedidoActual.reduce((acc, item) => acc + item.price, 0);
     setTotal(nuevoTotal);
   };
@@ -49,10 +46,32 @@ export default function Menu() {
     });
   };
 
+  // Boton Enviar Pedido
+  const enviarPedido = async () => {
+    if (pedido.length === 0) return;
+
+    try {
+      const res = await fetch("/api/orders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(pedido),
+      });
+
+      if (!res.ok) throw new Error("Error al enviar pedido");
+
+      setPedido([]);
+      setTotal(0);
+      setMensaje("Pedido confirmado");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   // Ejercicio HU1: <ul data-testid="menu-list">
   // Ejercicio HU2: <h2>Pedido</h2>
   // Ejercicio HU3: <h3>Total: ${total}</h3>
   // Ejercicio HU4: <button>Eliminar</button>
+  // Ejercicio HU5:
   return (
     <div>
       <h1>Menú de La Cafetería</h1>
@@ -76,7 +95,12 @@ export default function Menu() {
         ))}
       </ul>
 
+      <button onClick={enviarPedido}>Enviar pedido</button>
+
       <h3>Total: ${total}</h3>
+
+      {mensaje && <p>{mensaje}</p>}
+      
     </div>
   );
 }
