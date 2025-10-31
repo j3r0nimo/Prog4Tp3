@@ -16,11 +16,23 @@ export default function Menu() {
 
   const [mensaje, setMensaje] = useState<string | null>(null); // test HU5, para conocer el estado del Pedido
 
+  const [error, setError] = useState<string | null>(null);
+
   // Llamado a la API para traer los datos simulados, desde handlers.ts
   useEffect(() => {
     fetch("/api/productos")
-      .then((res) => res.json())
-      .then(setProductos);
+      .then((res) => {
+        if (!res.ok) throw new Error("Error al cargar menú");
+        return res.json();
+      })
+      .then((data) => {
+        if (data.length === 0) {
+          setError("No hay productos disponibles");
+        } else {
+          setProductos(data);
+        }
+      })
+      .catch(() => setError("Error al cargar el menú"));
   }, []);
 
   // Función para agregar productos
@@ -73,30 +85,38 @@ export default function Menu() {
     <div>
       <h1>Menú de La Cafetería</h1>
 
-      <ul data-testid="menu-list">
-        {productos.map((p) => (
-          <li key={p.id}>
-            {p.name} - ${p.price}{" "}
-            <button onClick={() => agregarItem(p)}>Agregar</button>
-          </li>
-        ))}
-      </ul>
+      {error ? ( // Si hay un error, se muestra un mensaje
+        <p>{error}</p>
+      ) : (
+        <>
+          <ul data-testid="menu-list">
+            {productos.map((p) => (
+              <li key={p.id}>
+                {p.name} - ${p.price}{" "}
+                <button onClick={() => agregarItem(p)}>Agregar</button>
+              </li>
+            ))}
+          </ul>
 
-      <h2>Pedido</h2>
-      <ul role="list" data-testid="order-list">
-        {pedido.map((item, index) => (
-          <li key={index} role="listitem">
-            {item.name} - ${item.price}{" "}
-            <button onClick={(e) => eliminarItem(index, e)}>Eliminar</button>
-          </li>
-        ))}
-      </ul>
+          <h2>Pedido</h2>
+          <ul role="list" data-testid="order-list">
+            {pedido.map((item, index) => (
+              <li key={index} role="listitem">
+                {item.name} - ${item.price}{" "}
+                <button onClick={(e) => eliminarItem(index, e)}>
+                  Eliminar
+                </button>
+              </li>
+            ))}
+          </ul>
 
-      <button onClick={enviarPedido}>Enviar pedido</button>
+          <button onClick={enviarPedido}>Enviar pedido</button>
 
-      <h3>Total: ${total}</h3>
+          <h3>Total: ${total}</h3>
 
-      {mensaje && <p>{mensaje}</p>}
+          {mensaje && <p>{mensaje}</p>}
+        </>
+      )}
     </div>
   );
 }

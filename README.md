@@ -33,9 +33,41 @@ Simulador de Pedidos de Cafetería (TDD + React Testing Library + MSW)
 
 ---
 
-## Ciclo de las pruebas
+## Ciclo de testing 1. Preparación del entorno de mocks
 
-Explicar (Cuando termine el HU6)
+- npm run test inicia el servicio de vitest. (es el mismo comando que npx vitest)
+- El proceso revisa el archivo vite.config.ts, que entonces procesa el archivo (setupFiles: "./src/setupTests.ts")
+- Antes de todos los tests (beforeAll), se levanta el mock server de MSW: server.listen();
+- Entre tests (afterEach), se resetean los handlers para no arrastrar mocks de otros tests: server.resetHandlers();
+- Al finalizar todos los tests (afterAll), se apaga el server: server.close();
+- Objetivo: simular peticiones HTTP reales sin depender del backend.
+
+---
+
+## Ciclo de testing 2. Configuración del escenario
+
+- Cada test puede redefinir cómo responderá el mock:
+- por ejemplo, recibir un listado: http.get("/api/productos", () => HttpResponse.json([]))
+- o recibir un error: http.get("/api/productos", () => HttpResponse.error())
+- Objetivo: aislar el comportamiento del componente frente a distintos escenarios de red.
+
+---
+
+## Ciclo de testing 3. Render del componente
+
+- Objetivo: montar el componente en un entorno DOM simulado (JSDOM) para observar su comportamiento.
+
+```
+render(<Menu />);
+```
+
+---
+
+## Ciclo de testing 4. Esperar resultados asíncronos
+
+- El componente probablemente hace un fetch al montar. Por eso se usa:
+- await waitFor(() => expect(...).toBeInTheDocument());
+- Objetivo: esperar a que el componente reaccione a la respuesta de la API mockeada (mostrar mensaje, lista, error, etc.).
 
 ---
 
