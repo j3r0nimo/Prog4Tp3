@@ -1,27 +1,39 @@
-// componente para listado de productos
 import { useEffect, useState } from 'react';
-import type { Product } from '../types/product' ;
-// la palabra type le dice al compilador que esto es solo un tipo, y que no se debe generar ningun import real en el JS final, sino intenta importar alg q  no exsiste en tiempo de ejecucion (solo exsiste en compilacion). se usa para checkeo de tipos no se traduce a JS 
+import ProductItem from './ProductItem';
+import type { Product } from '../types/product';
 
 export default function Menu() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetch('/api/menu')
-      .then(res => res.json())
-      .then(data => {
-        setProducts(data);
-        setLoading(false);
-      });
+    let mounted = true;
+    (async () => {
+      try {
+        const res = await fetch('/api/menu');
+        if (!res.ok) throw new Error('Network error');
+        const data = (await res.json()) as Product[];
+        if (mounted) setProducts(Array.isArray(data) ? data : []);
+      } catch {
+        if (mounted) setError(true);
+      } finally {
+        if (mounted) setLoading(false);
+      }
+    })();
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   if (loading) return <div>Cargando menú...</div>;
+  if (error) return <div role="alert">Error al cargar menú</div>;
+  if (products.length === 0) return <div>No hay productos disponibles</div>;
 
   return (
-    <ul>
-      {products.map(product => (
-        <li key={product.id}>{product.name} - ${product.price}</li>
+    <ul role="list">
+      {products.map((product) => (
+        <ProductItem key={product.id} product={product} />
       ))}
     </ul>
   );

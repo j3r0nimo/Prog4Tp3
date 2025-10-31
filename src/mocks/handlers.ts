@@ -12,9 +12,8 @@ export const handlers = [
 
   // Endpoint para enviar pedidos (simulado)
   http.post("/api/orders", () => {
-    // simular que siempre confirma el pedido
-    return HttpResponse.json({ message: "Pedido recibido" }, { status: 201 });
+    // simular confirmación de pedido
+    return HttpResponse.json({ orderId: "ORDER-123", message: "Pedido confirmado" }, { status: 201 });
   }),
-
 
 ];
