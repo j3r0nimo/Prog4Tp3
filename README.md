@@ -84,6 +84,32 @@ render(<Menu />);
 
 ---
 
+## Test de integración - Flujo completo del sistema
+
+El test de integración (pedidoCompleto.test.tsx) combina la funcionalidad probada en los test unitarios individuales, en una prueba de flujo completa. Mientras que las pruebas unitarias verifican los componentes y funciones individuales de forma aislada, este test de integración garantiza que todas estas piezas funcionen correctamente juntas en un escenario real.
+
+# Objetivo
+Verificar que el sistema:
+1. Cargue correctamente el menú de productos (Mockeado con MSW).
+2. Permita agregar items al pedido.
+3. Calcule y muestre el total dinamicamente.
+4. Envíe el pedido (Mock POST) y muestre la confirmación.
+5. Reinicie la interfaz inicial luego del envío del pedido.
+
+# Funcionamiento
+* Se utiliza `render(<App />)` de React Testing Library para montar la aplicación completa en un entorno virtual (un jsdom).
+* Las llamadas a la API `/api/productos` y `/api/orders` son interceptadas por MSW, que devuelve respuestas simuladas sin necesidad de un backend real.
+* El test interactua como un usuario real:
+    - Espera a que se cargue el menú.
+    - Simula clics en botones "Agregar" y "Enviar Pedido"
+    - Verifica cambios en la interfaz con `screen`, `fireEvent` y `waitFor`.
+    - Finalmente, comprueba que se muestre "pedido confirmado" y que la lista se vacíe.
+
+# Resultado esperado
+El test pasa en verde si el flujo completo, desde la carga del menú hasta la confirmación del pedido, funciona sin errores y todos los componentes del sistema interactúan correctamente entre sí.
+
+---
+
 ## Integrantes Grupo 11
 
 - Jeronimo Baltian Ortiz
