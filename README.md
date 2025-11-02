@@ -71,6 +71,12 @@ render(<Menu />);
 
 ---
 
+## Test de integración - Flujo completo del sistema
+
+El test de integración (pedidoCompleto.test.tsx) combina la funcionalidad probada en los test unitarios individuales, en una prueba de flujo completa. Mientras que las pruebas unitarias verifican los componentes y funciones individuales de forma aislada, este test de integración garantiza que todas estas piezas funcionen correctamente juntas en un escenario real.
+
+---
+
 ## Bibliotecas & propósito
 
 | Biblioteca                  | Proposito                    | Resumen                                                                                                                       |
